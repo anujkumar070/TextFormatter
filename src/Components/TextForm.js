@@ -22,6 +22,12 @@ export default function TextForm(props) {
         let newText="";
         setText(newText);
     }
+
+    const copyText=()=>{
+        let newText=document.getElementById("textbox");
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+    }
     return (
         <>
         <div className='container'>
@@ -32,6 +38,7 @@ export default function TextForm(props) {
             <button className="btn btn-primary mx-1" onClick={handleUpperCase}>Convert Into UpperCase</button>
             <button className="btn btn-primary mx-1" onClick={handleLowerCase}>Convert Into LowerCase</button>
             <button className="btn btn-primary mx-1" onClick={reset}>Reset</button>
+            <button className="btn btn-primary mx-1" onClick={copyText}>Copy Text</button>
 
         </div>
         <div className="container my-2">
