@@ -30,7 +30,7 @@ export default function TextForm(props) {
     }
     return (
         <>
-        <div className='container'>
+        <div className={`container ${props.mode==='dark'?'text-light':'text-dark'}`}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
             <textarea className="form-control" id="textbox" rows="10" value={text} onChange={handleChange} placeholder='Enter Your Text Here'></textarea>
@@ -41,15 +41,15 @@ export default function TextForm(props) {
             <button className="btn btn-primary mx-1" onClick={copyText}>Copy Text</button>
 
         </div>
-        <div className="container my-2">
-            <table>
-            <tr><th colspan="4"><u>Text Summary: </u></th></tr>
+        <div className={`container my-2 ${props.mode==='dark'?'text-light':'text-dark'}`}>
+            <table><tbody>
+            <tr><th colSpan="4"><u>Text Summary: </u></th></tr>
             <tr><td><b>No. of Words:</b> {text.split(" ").length}  &#160; &#160;  &#160;  &#160; </td>
             <td><b>No. of Characters: </b>{text.length}  &#160; &#160;  &#160;  &#160; </td>
             <td><b>Time needed to read: </b>{text.length*0.008} minutes  </td></tr>
-            </table>
+            </tbody></table>
             <h4><u>Preview: </u></h4>
-            <p>{text}</p>
+            <p>{text.length==0?'Enter some text above to load preview':text}</p>
 
         </div>
         </>
